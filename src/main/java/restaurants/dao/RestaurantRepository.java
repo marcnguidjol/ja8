@@ -2,6 +2,8 @@ package restaurants.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import restaurants.model.Anschrift;
 import restaurants.model.AnschriftBuilder;
@@ -9,6 +11,8 @@ import restaurants.model.Restaurant;
 
 public class RestaurantRepository {
 
+	static Logger LOG = Logger.getLogger(RestaurantRepository.class.getSimpleName());
+	
 	private List<Restaurant> lieferServices;
 
 	public RestaurantRepository() {
@@ -28,7 +32,8 @@ public class RestaurantRepository {
 				.build();
 
 		lieferServices.add(new Restaurant(name, anschrift));
-
+		
+		LOG.log(Level.INFO, "--- Lieferservices {0} ---", lieferServices);
 	}
 
 	public List<Restaurant> getLieferServices() {
